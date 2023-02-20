@@ -1,5 +1,5 @@
 import React from "react";
-import Article1 from "../../articles/Article1/Article1.mdx";
+import Article1 from "../../articles/Article1.mdx";
 
 
 
@@ -8,7 +8,7 @@ function Articles(){
         <div>
             <Article1 components={{
                 img:({src})=>{
-                    return <img src={"/assets/images/articles/"+src}/>
+                    return <img src={"/assets/images/1/"+src}/>
                 },
                 code:({children})=>{
                     return <div style={{backgroundColor:"#282c34",color:"#abb2bf"}}>{children}</div>

@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const {EsbuildPlugin} = require('esbuild-loader');
+const mapArticles=require('./src/mapArticles');
+
+const articleList=mapArticles();
 
 module.exports = {
     mode: 'development',
@@ -60,7 +63,10 @@ module.exports = {
     },
     plugins: [
         new webpack.ProgressPlugin(),
-        new HtmlWebpackPlugin({template: "./public/index.html"})
+        new HtmlWebpackPlugin({template: "./public/index.html"}),
+        new webpack.DefinePlugin({
+            articleList:JSON.stringify(articleList)
+        })
     ],
     devServer: {
         static: {
