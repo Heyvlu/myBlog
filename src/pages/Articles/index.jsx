@@ -1,19 +1,28 @@
-import React from "react";
-import Article1 from "../../articles/Article1.mdx";
-
+import React,{lazy,Suspense} from "react";
+import {useLocation} from "react-router-dom";
+import Loading from "@/components/Loading";
+import styles from "./index.scss";
+const getArticle=(filename)=>lazy(()=>import(`@/articles/${filename}`));
 
 
 function Articles(){
+    const location=useLocation();
+    const {filename}=location.state;
+    const Article=getArticle(filename);
     return (
-        <div>
-            <Article1 components={{
-                img:({src})=>{
-                    return <img src={"/assets/images/1/"+src}/>
-                },
-                code:({children})=>{
-                    return <div style={{backgroundColor:"#282c34",color:"#abb2bf"}}>{children}</div>
-                }
-            }}/>
+        <div className={styles["article"]}>
+            <div className={styles["articleDetail"]}>
+                <Suspense fallback={<Loading/>}>
+                    <Article components={{
+                        img:({src})=>{
+                            return <img src={"/assets/images/articles/"+src} className={styles["articleImg"]}/>
+                        },
+                        code:({children})=>{
+                            return <pre className={styles["articleCode"]}>{children}</pre>
+                        }
+                    }}/>
+                </Suspense>
+            </div>
         </div>
     )
 }

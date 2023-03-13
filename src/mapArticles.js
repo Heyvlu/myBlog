@@ -6,7 +6,7 @@ const mapArticles =()=>{
     const data=fs.readdirSync('./src/articles');
     data.map(item=>{
         const article=fs.readFileSync(`./src/articles/${item}`,'utf8');
-        result.push(article)
+        result.push([article,item]);
     })
     return result;
 }

@@ -2,6 +2,9 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const {EsbuildPlugin} = require('esbuild-loader');
+const MiniCssExtractPlugin=require("mini-css-extract-plugin");
+const devMode=process.env.NODE_ENV !== "production";
+
 const mapArticles=require('./src/mapArticles');
 
 const articleList=mapArticles();
@@ -35,9 +38,21 @@ module.exports = {
                 use: [{loader: 'esbuild-loader', options: {target: 'es2020'}}]
             },
             {
-                test: /\.scss/i,
+                test: /\.css$/i,
                 use: [
-                    {loader: 'style-loader'},
+                    devMode ? 'style-loader':MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: false,
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(sa|sc)ss$/i,
+                use: [
+                    devMode ? 'style-loader':MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
                         options: {
@@ -75,6 +90,7 @@ module.exports = {
         open: true,
         hot: true,
         compress: true,
-        port: 3000
+        port: 3000,
+        historyApiFallback:true
     }
 }

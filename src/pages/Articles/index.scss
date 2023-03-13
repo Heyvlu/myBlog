@@ -1,0 +1,32 @@
+.article{
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: #355da7;
+  padding: 10px 0;
+  .articleDetail{
+    width: 45vw;
+    padding: 20px 25px;
+    background-color: #ffff;
+    .articleImg{
+      width: 100%;
+      max-height: 500px;
+      margin: 10px 0;
+    }
+    .articleCode{
+      color: #abb2bf;
+      font-size: 14px;
+      line-height: 22px;
+      background-color: #282c34;
+      width: 100%;
+      display: block;
+      white-space: pre-wrap;
+      max-height: 350px;
+      overflow: auto;
+    }
+    .articleCode:hover{
+
+    }
+  }
+}
