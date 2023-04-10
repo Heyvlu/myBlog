@@ -1,4 +1,6 @@
 
+export const info = {time:"2023"}
+
 # 最近非常火的ChatGPT到底是个啥？
 
 ***
@@ -22,7 +24,7 @@
 
 ![图片](003.png)
 
-```
+```sql
     SELECT
     DATE FORMAT(loginlog.login date,%Y-%m-%d')date,
     ROUND(COUNT(DISTINCT loginlog.userid) / COUNT(DISTINCT yesterday log.userid)* 100, 2) AS retention rate

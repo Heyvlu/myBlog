@@ -13,13 +13,18 @@ function Home(){
     }
     return (
         <div className={styles["home"]}>
-            <div className={styles["preview"]}>
-                {
-                    articleList.map((text,index)=>{
-                        return <ArticlePreview text={text[0]} filename={text[1]} key={index} articleDetail={articleDetail}/>
-                    })
-                }
-            </div>
+            {
+                articleList.map((text,index)=>{
+                    const imgName=text[1].match(/([\w\W]+)\./)[1];
+                    console.log(imgName)
+                    return <div className={styles["preview"]}>
+                        <div className={styles["titleDiv"]}>
+                            <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]} onClick={()=>articleDetail(text[1])}/>
+                        </div>
+                        <ArticlePreview text={text[0]} filename={text[1]} key={index} articleDetail={articleDetail}/>
+                    </div>
+                })
+            }
         </div>
     )
 }

@@ -22,12 +22,28 @@
 
 ![图片](003.png)
 
-    `SELECT
-         DATE FORMAT(loginlog.login date,%Y-%m-%d') date,ROUND(COUNT(DISTINCT loginlog.userid) / COUNT(DISTINCT yesterday log.userid)* 100, 2) AS retention rate
-         FROM loginlog
-         LEFT JOIN loginlog yesterday log
-         ON loginlog.userid = yesterday log.useridAND loginlog.login date - INTERVAL 1 DAY = yesterday log.login dateGROUP BY date;`
+```
+SELECT
+DATE FORMAT(loginlog.login date,%Y-%m-%d')date,
+ROUND(COUNT(DISTINCT loginlog.userid) / COUNT(DISTINCT yesterday log.userid)* 100, 2) AS retention rate
+FROM loginlog
+LEFT JOIN loginlog yesterday log
+ON loginlog.userid = yesterday log.userid
+AND loginlog.login date - INTERVAL 1 DAY = yesterday log.login date
+GROUP BY date;
+```
 
+```
+for(let i=0;i<arr.length-1;i++){
+    for(let j=0;j<arr.length-1;j++){
+        if(arr[j]>arr[j+1]){
+            let swap=arr[j];
+            arr[j]=arr[j+1];
+            arr[j+1]=swap;
+        }
+    }
+}
+```
 3. 与其他多数聊天机器人不同的是，ChatGPT能够记住与用户之前的对话内容和给它的提示。此外，为了防止ChatGPT接受或生成冒犯性言论，输入内容会由审核API进行过滤，以减少潜在的种族主义或性别歧视等内容。目前，有部分地区无法使用此项服务。
 
 4. ChatGPT也存在一些局限。其奖励模型围绕人类监督而设计，可能导致过度优化，从而影响性能，即古德哈特定律。例如在训练过程中，不管实际理解或事实内容如何，审核者都会偏好更长的答案。训练数据有时也存在算法偏见，比如当程序接受到首席执行官之类的模糊描述时可能会假设此人是白人男性。

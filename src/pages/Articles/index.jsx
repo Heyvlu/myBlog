@@ -9,6 +9,7 @@ function Articles(){
     const location=useLocation();
     const {filename}=location.state;
     const Article=getArticle(filename);
+    console.log(Article)
     return (
         <div className={styles["article"]}>
             <div className={styles["articleDetail"]}>
@@ -18,7 +19,10 @@ function Articles(){
                             return <img src={"/assets/images/articles/"+src} className={styles["articleImg"]}/>
                         },
                         code:({children})=>{
-                            return <pre className={styles["articleCode"]}>{children}</pre>
+                            const codes = children.split("\n");
+                            return <pre className={styles["articleCode"]}>
+                                {codes.map(code=><code>{code}</code>)}
+                            </pre>
                         }
                     }}/>
                 </Suspense>

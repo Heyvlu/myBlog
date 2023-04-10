@@ -1,13 +1,13 @@
 .preview{
-  height: 120px;
-  width: 60vw;
-  border-bottom: 1px solid #f0f0f2;
-  cursor: pointer;
+  height: 160px;
+  width: 50vw;
   padding: 10px 20px;
   .title{
-    font-size: 18px;
+    font-size: 19px;
     font-weight: 500;
-    padding: 10px 0;
+    margin: 10px 0;
+    height: 27px;
+    overflow: hidden;
   }
   .title:hover{
     text-decoration: underline;

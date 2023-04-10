@@ -24,6 +24,21 @@
       white-space: pre-wrap;
       max-height: 350px;
       overflow: auto;
+      counter-reset: line;
+      code{
+        display: block;
+      }
+      code::before{
+        counter-increment: line;
+        content: counter(line);
+        display: inline-block;
+        width: 3em;
+        text-align: right;
+        border-right: 2px solid #999;
+        padding-right: .8em;
+        margin-right: 1em;
+        color: #999;
+      }
     }
     .articleCode:hover{
 
