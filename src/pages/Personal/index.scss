@@ -1,0 +1,77 @@
+.personal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 15vw;
+  height: 400px;
+  border: 1px solid #f0f0f2;
+  border-radius: 10px;
+  cursor: default;
+  img{
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    border-radius: 50%;
+    transition-duration: .5s;
+    transition-timing-function: linear;
+    transition-property: transform;
+  }
+  img:hover{
+    transform: rotate(360deg);
+  }
+  .userName{
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+  .signature{
+    color: #555666;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  .summary{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 18px;
+    .summaryName{
+      color: #555666;
+      margin-bottom: 6px;
+    }
+  }
+  .followMe{
+    width: 80%;
+    height: 32px;
+    position: relative;
+    background-color: dodgerblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    .followMeItem{
+      color: white;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .followMe:before{
+    content:"";
+    width: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background: coral;
+    transition: 1s linear;
+
+  }
+  .followMe:hover:before{
+    width: 100%;
+  }
+}
+.personal:hover{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  background-color: rgba(211,211,211,.1);
+}

@@ -8,6 +8,7 @@
     "build": "webpack"
   },
   "dependencies": {
+    "@douyinfe/semi-icons": "^2.32.1",
     "@douyinfe/semi-ui": "^2.30.1",
     "@mdx-js/loader": "^2.3.0",
     "react": "^18.2.0",

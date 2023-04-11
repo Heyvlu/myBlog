@@ -1,0 +1,34 @@
+.notice{
+  width: 15vw;
+  height: 180px;
+  border: 1px solid #f0f0f2;
+  border-radius: 10px;
+  cursor: default;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .noticeTitle{
+    width: 80%;
+    font-size: 18px;
+    margin-bottom: 18px;
+    .noticeIcon{
+      color: red;
+      animation: notice 1s infinite;
+    }
+    @keyframes notice {
+      50%{
+        transform: scale(1.2);
+      }
+    }
+  }
+  .noticeContent{
+    width: 80%;
+    font-size: 14px;
+    line-height: 26px;
+  }
+}
+.notice:hover{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  background-color: rgba(211,211,211,.1);
+}

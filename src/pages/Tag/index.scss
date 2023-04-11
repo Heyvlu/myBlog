@@ -1,0 +1,26 @@
+.tag{
+  width: 15vw;
+  min-height: 100px;
+  border: 1px solid #f0f0f2;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: default;
+  .tagTitle{
+    width: 80%;
+    font-size: 18px;
+    margin: 18px 0 18px 0;
+  }
+  .tagContent{
+    width: 80%;
+    color: darkgray;
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+}
+.tag:hover{
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  background-color: rgba(211,211,211,.1);
+}

@@ -9,7 +9,7 @@ function Articles(){
     const location=useLocation();
     const {filename}=location.state;
     const Article=getArticle(filename);
-    console.log(Article)
+    console.log(Article,"Article")
     return (
         <div className={styles["article"]}>
             <div className={styles["articleDetail"]}>
