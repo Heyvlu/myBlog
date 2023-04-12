@@ -1,24 +1,14 @@
 import React, {useEffect, useState} from "react";
 import styles from "./index.scss";
 import {IconGithubLogo} from "@douyinfe/semi-icons";
-import getInfo from "@/utils/getInfo"
+import getTags from "@/utils/getTags";
 
 function Personal(){
+    const tags=getTags();
+
     function goToGithub(){
         window.open("https://github.com/Heyvlu")
     }
-
-    // const [s,sets] = useState([<></>])
-    //
-    // useEffect(()=>{
-    //     (async ()=>{
-    //         const arr = await getInfo();
-    //         console.log('aaa',arr)
-    //         sets(arr)
-    //     })()
-    // },[])
-
-
 
     return(
         <div className={styles["personal"]}>
@@ -32,7 +22,7 @@ function Personal(){
                 </div>
                 <div>
                     <div className={styles["summaryName"]}>标签</div>
-                    <div>{getInfo().length}</div>
+                    <div>{tags.length}</div>
                 </div>
             </div>
             <div className={styles["followMe"]} onClick={goToGithub}>

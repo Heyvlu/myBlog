@@ -9,9 +9,13 @@ function Articles(){
     const location=useLocation();
     const {filename}=location.state;
     const Article=getArticle(filename);
-    console.log(Article,"Article")
+    const imgName=filename.match(/([\w\W]+)\./)[1];
+
     return (
         <div className={styles["article"]}>
+            <div className={styles["topImg"]}>
+                <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"}/>
+            </div>
             <div className={styles["articleDetail"]}>
                 <Suspense fallback={<Loading/>}>
                     <Article components={{

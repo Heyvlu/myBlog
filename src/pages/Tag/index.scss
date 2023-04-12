@@ -15,9 +15,17 @@
   }
   .tagContent{
     width: 80%;
-    color: darkgray;
-    font-size: 16px;
+    color: #999;
+    font-size: 15px;
+    line-height: 26px;
     margin-bottom: 18px;
+    .one{
+      margin-right: 9px;
+      cursor: pointer;
+    }
+    .one:hover{
+      color: red;
+    }
   }
 }
 .tag:hover{

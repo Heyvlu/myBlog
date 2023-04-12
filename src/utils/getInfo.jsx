@@ -6,7 +6,7 @@ import {compileSync,runSync} from "@mdx-js/mdx";
 function getFileNames(){
     let files=[];
     for (const item of articleList) {
-        files.push(item[0]);
+        files.push(item);
     }
     return files;
 }
@@ -16,7 +16,7 @@ function getInfo(){
     const info=[];
     for (const item of fileNames) {
 
-        const value =compileSync(item,{
+        const value =compileSync(item[0],{
             format:"mdx",
             outputFormat:'function-body'
         });
@@ -24,9 +24,13 @@ function getInfo(){
         const res =runSync(value,{
             jsx:jsxRuntime
         })
-        // console.log(res.info)
-        info.push(res.info);
+
+        if(res.info){
+            res.info.fileName=item[1];
+            info.push(res.info);
+        }
     }
+    console.log(info)
     return info;
 }
 

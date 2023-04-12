@@ -1,6 +1,6 @@
 .notice{
   width: 15vw;
-  height: 180px;
+  min-height: 187px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
   cursor: default;
@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-bottom: 20px;
   .noticeTitle{
     width: 80%;
     font-size: 18px;

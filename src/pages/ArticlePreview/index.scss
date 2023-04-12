@@ -2,6 +2,7 @@
   height: 160px;
   width: 50vw;
   padding: 10px 20px;
+  cursor: pointer;
   .title{
     font-size: 19px;
     font-weight: 500;
@@ -13,16 +14,27 @@
     text-decoration: underline;
   }
   .content{
-    font-size: 14px;
+    font-size: 15px;
     font-width: 400;
     color: #555666;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
   }
-
+  .preFooter{
+    color: darkgray;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top: 10px;
+    font-size: 14px;
+    overflow: hidden;
+    .time{
+      margin-right: 8px;
+    }
+  }
 }
 .preview:hover{
   color: rgba(255,0,0,.8);

@@ -1,6 +1,5 @@
 .app{
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: rgba(211,211,211,.3);
+  background-image: url("../public/assets/images/others/background.png");
+  background-size: cover;
+  background-attachment: fixed;
 }
