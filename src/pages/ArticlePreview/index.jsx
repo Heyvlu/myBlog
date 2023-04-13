@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styles from "./index.scss";
 import {IconCalendar,IconPriceTag} from "@douyinfe/semi-icons";
 import getInfo from "@/utils/getInfo";
@@ -9,8 +9,28 @@ function ArticlePreview(props){
     const articleContent=text.replaceAll(/[#*!`]/g,'').replace(new RegExp(articleTitle),'');
     const info=getInfo();
 
+    const [time,setTime]=useState('');
+    const [tags,setTags]=useState([]);
+
+    useEffect(()=>{
+        info.map( item => {
+            if(item.fileName===filename){
+                setTime(item.time)
+            }
+        })
+    },[])
+
+    useEffect(()=>{
+        info.map( item => {
+            if(item.fileName===filename){
+                const arr=Array.from(new Set(item.tags));
+                setTags(arr);
+            }
+        })
+    },[])
+
     return (
-        <div className={styles["preview"]} onClick={()=>articleDetail(filename)}>
+        <div className={styles["preview"]} onClick={()=>articleDetail(articleTitle,filename)}>
             <div className={styles["title"]}>
                 {articleTitle}
             </div>
@@ -18,27 +38,20 @@ function ArticlePreview(props){
                 {articleContent}
             </div>
             <div className={styles["preFooter"]}>
-                <div className={styles["time"]}>
+                {
+                    time?<div className={styles["time"]}>
                     <IconCalendar style={{position:"relative",top:"3px",marginRight:"3px"}}/>
-                    {info.map((item,index)=>{
-                        if(item.fileName===filename){
-                            return<span key={index}>{item.time}</span>
-                        }
-                    })}
-                </div>
-                <div>
-                    <IconPriceTag style={{position:"relative",top:"3px",marginRight:"3px"}}/>
-                    {info.map((item,index)=>{
-                        if(item.fileName===filename){
-                            const arr=Array.from(new Set(item.tags));
-
-                            const element=arr.map(tag=>{
-                                return <span key={tag} style={{marginRight:"5px"}}>{tag}</span>
-                            })
-                            return element
-                        }
-                    })}
-                </div>
+                    <span>{time}</span>
+                    </div>:''
+                }
+                {
+                    tags.length?<div>
+                        <IconPriceTag style={{position:"relative",top:"3px",marginRight:"3px"}}/>
+                        {tags.map(tag=>{
+                            return <span key={tag} style={{marginRight:"5px"}}>{tag}</span>
+                        })}
+                    </div>:''
+                }
             </div>
         </div>
     )

@@ -11,9 +11,9 @@ import Header from "@/components/Header";
 function Home(){
     const navigate=useNavigate();
 
-    function articleDetail(filename){
+    function articleDetail(articleTitle,filename){
         navigate('/articleDetail',{
-            state:{filename}
+            state:{articleTitle,filename}
         })
     }
     return (

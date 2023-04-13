@@ -6,11 +6,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex-shrink: 0;
   background: rgba(255,255,255,.4);
   backdrop-filter: blur(8px);
   position: fixed;
   top: 0;
+  z-index: 1;
   .headerLeft{
     margin-right: 30px;
     cursor: pointer;

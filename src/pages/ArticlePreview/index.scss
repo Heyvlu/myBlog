@@ -24,6 +24,7 @@
     -webkit-line-clamp: 4;
   }
   .preFooter{
+    height: 20px;
     color: darkgray;
     display: flex;
     justify-content: flex-end;
@@ -31,6 +32,7 @@
     top: 10px;
     font-size: 14px;
     overflow: hidden;
+    cursor: default;
     .time{
       margin-right: 8px;
     }
