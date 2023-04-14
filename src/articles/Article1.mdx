@@ -25,14 +25,14 @@ export const info = {time:"2023-04-11",tags:["ChatGPT","编程"]}
 ![图片](003.png)
 
 ```sql
-    SELECT
-    DATE FORMAT(loginlog.login date,%Y-%m-%d')date,
-    ROUND(COUNT(DISTINCT loginlog.userid) / COUNT(DISTINCT yesterday log.userid)* 100, 2) AS retention rate
-    FROM loginlog
-    LEFT JOIN loginlog yesterday log
-    ON loginlog.userid = yesterday log.userid
-    AND loginlog.login date - INTERVAL 1 DAY = yesterday log.login date
-    GROUP BY date;
+SELECT
+DATE FORMAT(loginlog.login date,%Y-%m-%d')date,
+ROUND(COUNT(DISTINCT loginlog.userid) / COUNT(DISTINCT yesterday log.userid)* 100, 2) AS retention rate
+FROM loginlog
+LEFT JOIN loginlog yesterday log
+ON loginlog.userid = yesterday log.userid
+AND loginlog.login date - INTERVAL 1 DAY = yesterday log.login date
+GROUP BY date;
 ```
 
 3. 与其他多数聊天机器人不同的是，ChatGPT能够记住与用户之前的对话内容和给它的提示。此外，为了防止ChatGPT接受或生成冒犯性言论，输入内容会由审核API进行过滤，以减少潜在的种族主义或性别歧视等内容。目前，有部分地区无法使用此项服务。

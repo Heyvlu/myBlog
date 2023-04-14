@@ -14,7 +14,6 @@
     }
     .topText{
       width: 100%;
-      height: 350px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -23,18 +22,22 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%,-50%);
-      overflow: hidden;
-      //padding: 20px 10px;
       .topArticleTitle{
+        max-height: 224px;
         font-size: 40px;
         font-weight: bold;
         background: linear-gradient(to right,red,blue);
         -webkit-background-clip: text;
         color: transparent;
+        overflow: hidden;
+        padding: 0 15px;
+        line-height: 58px;
+        vertical-align: center;
       }
       .topInfo{
         color: #ffffff;
         font-size: 18px;
+        padding: 0 15px;
       }
     }
   }
@@ -51,43 +54,6 @@
         width: 100%;
         max-height: 500px;
         margin: 10px 0;
-      }
-      .articleCode{
-        color: #abb2bf;
-        font-size: 14px;
-        line-height: 22px;
-        background-color: #282c34;
-        width: 100%;
-        display: block;
-        white-space: pre-wrap;
-        max-height: 350px;
-        overflow: auto;
-        counter-reset: line;
-        position: relative;
-        padding: 25px 5px 10px 0;
-        code{
-          display: block;
-        }
-        code::before{
-          counter-increment: line;
-          content: counter(line);
-          display: inline-block;
-          width: 1.5em;
-          text-align: right;
-          border-right: 2px solid #999;
-          padding-right: .8em;
-          margin-right: 1em;
-          color: #999;
-        }
-        .iconCopy{
-          color: #ffff;
-          position: absolute;
-          top: 6px;
-          right: 9px;
-        }
-        .iconCopy:hover{
-          color: dodgerblue;
-        }
       }
     }
   }

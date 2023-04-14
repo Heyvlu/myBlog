@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ArticlePreview from "../ArticlePreview";
 import {useNavigate} from "react-router-dom";
 import styles from "./index.scss";
@@ -16,6 +16,13 @@ function Home(){
             state:{articleTitle,filename}
         })
     }
+
+    useEffect(()=>{
+        window.addEventListener('scroll',()=>{
+            console.log(window.scrollY);
+        })
+    },[])
+
     return (
         <div className={styles["home"]}>
             <Header/>

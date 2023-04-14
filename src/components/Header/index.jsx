@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styles from './index.scss';
 import {IconGithubLogo, IconHome, IconLikeHeart} from "@douyinfe/semi-icons";
 import {useNavigate} from "react-router-dom";

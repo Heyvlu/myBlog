@@ -1,0 +1,53 @@
+.codeBlock{
+  background-color: #282c34;
+  width: 100%;
+  position: relative;
+  .iconCopy{
+    color: #ffff;
+    position: absolute;
+    top: 6px;
+    right: 9px;
+    cursor: pointer;
+  }
+  .iconCopy:hover{
+    color: dodgerblue;
+  }
+  .copyDefault{
+    opacity: 0;
+    color: #abb2bf;
+    position: absolute;
+    top: 2px;
+    right: 28px;
+  }
+  .copySuccess{
+    opacity: 1;
+    color: #abb2bf;
+    position: absolute;
+    top: 2px;
+    right: 28px;
+  }
+  .articleCode{
+    color: #abb2bf;
+    font-size: 14px;
+    line-height: 22px;
+    word-break: keep-all;
+    counter-reset: line;
+    padding: 25px 20px 10px 5px;
+    overflow: auto;
+    code{
+      display: block;
+      width: fit-content;
+    }
+    code::before{
+      counter-increment: line;
+      content: counter(line);
+      display: inline-block;
+      width: 1.5em;
+      text-align: right;
+      border-right: 2px solid #999;
+      padding-right: .5em;
+      margin-right: 1em;
+      color: #999;
+    }
+  }
+}
