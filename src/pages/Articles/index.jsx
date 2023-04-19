@@ -7,7 +7,6 @@ import {IconCalendar, IconPriceTag} from "@douyinfe/semi-icons";
 import getInfo from "@/utils/getInfo";
 import BackToTop from "@/components/BackToTop";
 import CodeBlock from "@/components/CodeBlock";
-import eventBus from "@/utils/pubSub";
 const getArticle=(filename)=>lazy(()=>import(`@/articles/${filename}`));
 
 
@@ -20,7 +19,6 @@ function Articles(){
 
     const [time,setTime]=useState('');
     const [tags,setTags]=useState([]);
-    const [top,setTop]=useState(true);
 
     useEffect(()=>{
         info.map( item => {
@@ -42,19 +40,6 @@ function Articles(){
     useEffect(()=>{
         window.scrollTo(0,0);
     },[])
-
-    // useEffect(()=>{
-    //     const scrollTop=(scrollY)=>{
-    //         if (scrollY===0){
-    //             setTop(true);
-    //             console.log("true")
-    //         }else{
-    //             setTop(false);
-    //             console.log("false")
-    //         }
-    //     }
-    //     eventBus.on("winScroll",scrollTop)
-    // },[])
 
     return (
         <Suspense fallback={<Loading/>}>
