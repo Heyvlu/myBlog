@@ -17,11 +17,7 @@ function Home(){
         })
     }
 
-    useEffect(()=>{
-        window.addEventListener('scroll',()=>{
-            console.log(window.scrollY);
-        })
-    },[])
+
 
     return (
         <div className={styles["home"]}>
