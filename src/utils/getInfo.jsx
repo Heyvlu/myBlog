@@ -30,7 +30,7 @@ function getInfo(){
             info.push(res.info);
         }
     }
-    console.log(info)
+    // console.log(info)
     return info;
 }
 

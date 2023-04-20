@@ -3,7 +3,6 @@ import styles from "./index.scss";
 import {IconBell} from "@douyinfe/semi-icons";
 
 function Notice(){
-    console.log(articleList)
     return(
         <div className={styles["notice"]}>
             <div className={styles["noticeTitle"]}>
