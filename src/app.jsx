@@ -10,7 +10,8 @@ import eventBus from "./utils/pubSub";
 function App(){
     const element=useRoutes(routes);
     const emitScroll=()=>{
-        eventBus.emit("winScroll",window.scrollY);
+        // eventBus.emit("winScroll",window.scrollY);
+        eventBus.emit("scrollTop",document?.documentElement?.scrollTop);
     }
 
     useEffect(()=>{

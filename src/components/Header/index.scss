@@ -6,7 +6,8 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: fixed;
+  position: absolute;
+  top: 0;
   z-index: 1;
   transition: all 0.5s;
   .headerLeft{
@@ -18,7 +19,7 @@
     cursor: pointer;
   }
   .headerRight{
-    margin-right: 40px;
+    margin-right: 37px;
     cursor: pointer;
   }
 

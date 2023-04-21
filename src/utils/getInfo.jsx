@@ -2,19 +2,9 @@ import React from "react";
 import jsxRuntime from 'react/jsx-runtime'
 import {compileSync,runSync} from "@mdx-js/mdx";
 
-
-function getFileNames(){
-    let files=[];
-    for (const item of articleList) {
-        files.push(item);
-    }
-    return files;
-}
-
-const fileNames=getFileNames();
 function getInfo(){
     const info=[];
-    for (const item of fileNames) {
+    for (const item of articleList) {
 
         const value =compileSync(item[0],{
             format:"mdx",
@@ -26,11 +16,12 @@ function getInfo(){
         })
 
         if(res.info){
+            res.info.text=item[0];
             res.info.fileName=item[1];
             info.push(res.info);
         }
     }
-    // console.log(info)
+    console.log("info",info)
     return info;
 }
 

@@ -1,8 +1,11 @@
 .preview{
-  height: 160px;
-  width: 50vw;
-  padding: 10px 20px;
+  height: 200px;
+  width: 45vw;
+  padding: 10px 40px;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   .title{
     font-size: 19px;
     font-weight: 500;
@@ -21,7 +24,8 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
+    line-height: 200%;
   }
   .preFooter{
     height: 20px;
@@ -29,7 +33,7 @@
     display: flex;
     justify-content: flex-end;
     position: relative;
-    top: 10px;
+    top: 8px;
     font-size: 14px;
     overflow: hidden;
     cursor: default;
