@@ -1,0 +1,60 @@
+export const info = {time:"2023-03-25",tags:["发布","订阅","事件总线"]};
+
+# 实现发布订阅
+
+## 代码
+
+```
+class MyEventBus{
+    constructor() {
+        this.eventMap={};
+    }
+
+    // 订阅
+    on(eventName,eventFn){
+        let eventFns=this.eventMap[eventName];
+        if(!eventFns){
+            eventFns=[];
+            this.eventMap[eventName]=eventFns;
+        }
+        eventFns.push(eventFn);
+    }
+
+    // 解绑
+    off(eventName,eventFn){
+        let eventFns=this.eventMap[eventName];
+        if(!eventFns) return;
+        for(let i=0;i<eventFns.length;i++){
+            let fn=eventFns[i];
+            if(fn===eventFn){
+                eventFns.splice(i,1);
+                break;
+            }
+        }
+        // 如果eventFns已经清空了
+        if(eventFns.length===0){
+            delete this.eventMap[eventName];
+        }
+    }
+
+    // 发布
+    emit(eventName,...args){
+        let eventFns=this.eventMap[eventName];
+        if(!eventFns) return;
+        eventFns.forEach(fn=>{
+            fn(...args);
+        })
+    }
+}
+
+const eventBus=new MyEventBus();
+```
+
+## 发布
+
+![图片](实现发布订阅1.png)
+
+## 订阅
+
+![图片](实现发布订阅2.png)
+
