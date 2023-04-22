@@ -21,7 +21,6 @@ function getInfo(){
             info.push(res.info);
         }
     }
-    console.log("info",info)
     return info;
 }
 

@@ -1,27 +1,30 @@
 import React, {lazy, Suspense, useEffect, useMemo, useState} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation,useNavigate} from "react-router-dom";
 import Loading from "@/components/Loading";
 import styles from "./index.scss";
 import Header from "@/components/Header";
 import {IconCalendar, IconPriceTag} from "@douyinfe/semi-icons";
-import getInfo from "@/utils/getInfo";
+import getSortArticleList from "@/utils/getSortArticleList";
 import BackToTop from "@/components/BackToTop";
 import CodeBlock from "@/components/CodeBlock";
+import {IconReply} from "@douyinfe/semi-icons";
+import {Tooltip} from "@douyinfe/semi-ui";
 const getArticle=(filename)=>lazy(()=>import(`@/articles/${filename}`));
 
 
 function Articles(){
+    const navigate=useNavigate();
     const location=useLocation();
     const {articleTitle,filename}=location.state;
     const Article=useMemo(()=>getArticle(filename),[]);
     const imgName=filename.match(/([\w\W]+)\./)[1];
-    const info=getInfo();
+    const sortArticleList=getSortArticleList();
 
     const [time,setTime]=useState('');
     const [tags,setTags]=useState([]);
 
     useEffect(()=>{
-        info.map( item => {
+        sortArticleList.map( item => {
             if(item.fileName===filename){
                 setTime(item.time)
             }
@@ -29,7 +32,7 @@ function Articles(){
     },[])
 
     useEffect(()=>{
-        info.map( item => {
+        sortArticleList.map( item => {
             if(item.fileName===filename){
                 const arr=Array.from(new Set(item.tags));
                 setTags(arr);
@@ -49,7 +52,9 @@ function Articles(){
                 <div className={styles["top"]}>
                     <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"}/>
                     <div className={styles["topText"]}>
-                        <div className={styles["topArticleTitle"]}>{articleTitle}</div>
+                        <div className={styles["topArticleTitle"]}>
+                            {articleTitle}
+                        </div>
                         <div className={styles["topInfo"]}>
                             {
                                 time?<span style={{marginRight:"15px"}}>
@@ -66,6 +71,9 @@ function Articles(){
                                 </span>:''
                             }
                         </div>
+                        <Tooltip content={"返回"} position={"bottom"} style={{backgroundColor:"white",color:"black",letterSpacing:"2px"}}>
+                            <IconReply size={"extra-large"} className={styles["iconReply"]} onClick={()=>navigate(-1)}/>
+                        </Tooltip>
                     </div>
                 </div>
                 <div className={styles["detailFather"]}>
@@ -76,6 +84,10 @@ function Articles(){
                             },
                             code:({children})=>{
                                 return <CodeBlock children={children}/>
+                            },
+                            h1:()=> {},
+                            strong:({children})=>{
+                                return <span style={{fontWeight:"bold"}}>{children}</span>
                             }
                         }}/>
                     </div>

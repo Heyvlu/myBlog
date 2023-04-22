@@ -4,6 +4,7 @@ const Home=lazy(()=>import("../pages/Home"));
 const Articles=lazy(()=>import('../pages/Articles'));
 const About=lazy(()=>import("../pages/About"));
 const TagDetail=lazy(()=>import("../pages/TagDetail"));
+const ArchiveDetail=lazy(()=>import("../pages/ArchiveDetail"));
 
 const routes=[
     {
@@ -21,6 +22,10 @@ const routes=[
     {
         path:'/tagDetail',
         element: <TagDetail/>
+    },
+    {
+        path:'/archiveDetail',
+        element: <ArchiveDetail/>
     },
     {
         path:"/",

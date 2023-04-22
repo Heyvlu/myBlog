@@ -17,7 +17,6 @@ class MyEventBus{
     off(eventName,eventFn){
         let eventFns=this.eventMap[eventName];
         if(!eventFns) return;
-        // {eat:[f1,f2,f3...]}
         for(let i=0;i<eventFns.length;i++){
             let fn=eventFns[i];
             if(fn===eventFn){

@@ -5,7 +5,7 @@ import getInfo from "@/utils/getInfo";
 
 function ArticlePreview(props){
     const {text,filename,articleDetail}=props;
-    const articleTitle=text.match(/\s*#+\s*([\w\W]+?)\s/)[1];
+    const articleTitle=text.match(/\s*#+\s*([\w\W]*?)\n/)[1];
     const articleContent=text.replaceAll(/[#*!`]/g,'').replace(new RegExp(articleTitle),'');
     const articleText=articleContent.replace(new RegExp(/export const info = {time:".*/),'');
     const info=getInfo();

@@ -8,11 +8,14 @@ import Tag from "@/pages/Tag";
 import {IconChevronDown} from "@douyinfe/semi-icons";
 import {Pagination} from "@douyinfe/semi-ui";
 import Header from "@/components/Header";
+import Archive from "@/pages/Archive";
+import getSortArticleList from "@/utils/getSortArticleList";
 
 function Home(){
+    const sortArticleList=getSortArticleList();
     const navigate=useNavigate();
     const [page, setPage]=useState(1);
-    const [list,setList]=useState(articleList.slice(0,6));
+    const [list,setList]=useState(sortArticleList.slice(0,6));
 
     function articleDetail(articleTitle,filename){
         navigate('/articleDetail',{
@@ -24,10 +27,10 @@ function Home(){
         setPage(currentPage);
         let see=(currentPage-1)*6;
         let newList;
-        if(see+6>=articleList.length){
-            newList=articleList.slice(see,articleList.length);
+        if(see+6>=sortArticleList.length){
+            newList=sortArticleList.slice(see,sortArticleList.length);
         }else{
-            newList=articleList.slice(see,see+6);
+            newList=sortArticleList.slice(see,see+6);
         }
         setList(newList);
         window.scrollTo(0,0);
@@ -51,16 +54,17 @@ function Home(){
                     <Personal/>
                     <Notice/>
                     <Tag/>
+                    <Archive/>
                 </div>
                 <div className={styles["right"]}>
                     {
-                        list.map((text,index)=>{
-                            const imgName=text[1].match(/([\w\W]+)\./)[1];
+                        list.map((item,index)=>{
+                            const imgName=item.fileName.match(/([\w\W]+)\./)[1];
                             return <div className={styles["preview"]} key={index}>
                                 {
                                     index % 2 ?
                                         <>
-                                            <ArticlePreview text={text[0]} filename={text[1]} articleDetail={articleDetail}/>
+                                            <ArticlePreview text={item.text} filename={item.fileName} articleDetail={articleDetail}/>
                                             <div className={styles["titleDiv"]}>
                                                 <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
                                             </div>
@@ -70,13 +74,13 @@ function Home(){
                                             <div className={styles["titleDiv"]}>
                                                 <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
                                             </div>
-                                            <ArticlePreview text={text[0]} filename={text[1]} articleDetail={articleDetail}/>
+                                            <ArticlePreview text={item.text} filename={item.fileName} articleDetail={articleDetail}/>
                                         </>
                                 }
                             </div>
                         })
                     }
-                    <Pagination total={articleList.length} showTotal pageSize={6} currentPage={page} onPageChange={onPageChange}></Pagination>
+                    <Pagination total={sortArticleList.length} showTotal pageSize={6} currentPage={page} onPageChange={onPageChange}></Pagination>
                 </div>
             </div>
         </div>

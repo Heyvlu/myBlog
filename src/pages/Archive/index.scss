@@ -1,35 +1,38 @@
-.tag{
+.archive{
   width: 15vw;
   min-height: 100px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
+  cursor: default;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  cursor: default;
   margin-bottom: 20px;
-  .tagTitle{
+  .archiveTitle{
     width: 80%;
     font-size: 18px;
     margin: 18px 0 18px 0;
   }
-  .tagContent{
+  .archiveContent{
     width: 80%;
-    color: #999;
-    font-size: 15px;
-    line-height: 26px;
-    margin-bottom: 18px;
-    .one{
-      margin-right: 9px;
+    padding-bottom: 18px;
+    .archiveItem{
+      width: 100%;
+      line-height: 35px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      transition: all .4s ease-in-out;
       cursor: pointer;
+      color: #555666;
     }
-    .one:hover{
-      color: red;
+    .archiveItem:hover{
+      background-color: dodgerblue;
     }
   }
 }
-.tag:hover{
+.archive:hover{
   box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
   background-color: rgba(211,211,211,.1);
 }

@@ -1,36 +1,31 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from './index.scss';
 import {IconGithubLogo, IconHome, IconLikeHeart} from "@douyinfe/semi-icons";
 import {useNavigate} from "react-router-dom";
 import eventBus from "@/utils/pubSub";
-import {logger} from "@douyinfe/semi-ui/lib/es/table/utils";
 
 function Header(){
     const navigate=useNavigate();
-    const wheelRef=useRef(false);
     const [isTop,setIsTop]=useState(true);
 
     useEffect(()=>{
         const divHeader=document.getElementById("header");
         let topValue=0;
         const scTop=(scrollTop)=>{
-            // console.log(scrollTop)
             if(scrollTop===0){
                 setIsTop(true);
             }else{
                 setIsTop(false);
-                if(scrollTop>=90){
-                    if(scrollTop<=topValue){
-                        // console.log("向上")
-                        divHeader.style.top="-48px";
-                        divHeader.style.transform="translate3d(0,100%,0)";
-                    }else{
-                        // console.log("向下")
-                        divHeader.style.transform="translate3d(0,-100%,0)";
-                    }
-                }
-                topValue=scrollTop;
             }
+            if(scrollTop>=50){
+                if(scrollTop<=topValue){
+                    divHeader.style.top="-48px";
+                    divHeader.style.transform="translate3d(0,100%,0)";
+                }else{
+                    divHeader.style.transform="translate3d(0,-100%,0)";
+                }
+            }
+            topValue=scrollTop;
         }
         eventBus.on("scrollTop",scTop);
         return()=>{

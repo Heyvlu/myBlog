@@ -40,6 +40,16 @@
         font-size: 18px;
         padding: 0 15px;
       }
+      .iconReply{
+        color: white;
+        transform: scale(1.3);
+        cursor: pointer;
+        position: relative;
+        top: 25px;
+      }
+      .iconReply:hover{
+        color: red;
+      }
     }
   }
   .detailFather{
