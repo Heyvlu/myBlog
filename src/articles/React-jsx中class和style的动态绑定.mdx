@@ -1,0 +1,139 @@
+export const info = {time:"2022-07-08",tags:["动态绑定","样式","jsx"]}
+
+# React-jsx中class和style的动态绑定
+
+## 摘要
+操作元素的 class 列表和内联样式是数据绑定的一个常见需求，频繁操作dom元素会降低javascript性能，为了实现高性能js，动态绑定class和style是高素养程序员的必选。本文以React-JSX语法为基础，结合其它框架的实现方法，介绍如何实现ClassName 与 Style 的动态绑定。
+
+## 绑定 HTML Class
+
+### 对象语法
+
+我们可以传给 className 一个对象，以动态地切换 class：
+
+错误例子：
+
+```
+render(){
+  return <p className={ 'box-color'：this.state.isError }>hello world</p>
+}
+```
+
+可以实现的语法如下：
+
+1.使用逻辑运算符
+
+css文件
+```
+.box-color {
+  color：red;
+}
+```
+
+js文件
+```
+render(){
+  return <p className={ this.state.isError && 'box-color' }>hello world</p>
+}
+```
+
+2.使用三元运算符
+
+css文件
+```
+.box-show {
+  display: block;
+}
+.box-hide {
+  display: none;
+}
+```
+
+```
+render(){
+  return <p className={ this.state.isShow ? 'box-show' : 'box-hide' }>hello world</p>
+}
+```
+
+3.使用函数
+绑定的数据对象也不必内联定义在模板里：可以定义一个函数。
+
+js文件
+```
+getIsError() {
+  return this.state.isError ? 'box-color' : '';
+}
+render(){
+  return <p className={ this.getIsError() }>hello world</p>
+}
+```
+
+注：下面这种对象变量写法是不支持的，也不会报错，控制台className显示为[object object]，无效。
+```
+const classObj = {
+  'box-show': this.state.isShow,
+  'box-color': this.state.isError
+}
+render(){
+  return <p className={ classObj }>hello world</p>
+}
+```
+一般在项目逻辑比较复杂的场景中使用函数绑定方法，使用过多会使得视图层和逻辑层交杂混乱，难以阅读和维护，建议使用逻辑运算符和三元运算符方法动态绑定Class。
+
+### 数组语法
+React-JSX语法不支持className数组语法，尝试样例：
+
+css文件
+```
+.box-hide {
+  display: none;
+}
+.box-color {
+  color：red;
+}
+```
+
+js文件
+```
+this.state = {isShow: false}
+render(){
+  return <p className={ this.state.isShow ? 'box-color' : [ 'box-color', 'box-hide'] }>hello world</p>
+}
+```
+
+控制台显示结果（无效，中间多了个逗号）:
+```
+<p class="box-color, box-hide">hello world</p>
+```
+注：既然不支持数组语法，你只能将“box-color”中的样式复用到“box-hide”中，使用三元运算符来表示，这样无形中增加了css代码量。
+
+## 绑定内联样式
+
+### 对象语法
+
+style对象语法比clasName对象更加直观，处理的功能更加简单，逻辑运算符方法和函数绑定方法可以参考className的实现，下面只介绍三元运算符的使用：
+
+1.三元运算符
+
+js文件
+```
+render(){
+  return <p style={ this.state.isShow ? {display: 'inline-block'} : { display: 'none'} }>hello world</p>
+}
+```
+
+### 数组语法
+React-JSX语法也不支持style数组语法。
+
+js文件
+```
+render(){
+  return <p style={ this.state.isShow ? {color: 'red'} : [{color: 'red'}, {display: 'inline-block'}] }></p>
+}
+```
+控制台显示结果无效。
+
+总之，为了高质量的完成项目需求，应付越来越复杂的业务场景，那种大量操作dom元素，随意命名一个样式变量，然后绑定到class和style的做法是不提倡的。
+
+
+

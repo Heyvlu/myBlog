@@ -58,20 +58,20 @@ function Articles(){
                         <div className={styles["topInfo"]}>
                             {
                                 time?<span style={{marginRight:"15px"}}>
-                                    <IconCalendar style={{position:"relative",top:"3px",marginRight:"3px"}}/>
+                                    <IconCalendar style={{position:"relative",top:"1px",marginRight:"5px"}}/>
                                     <span>{time}</span>
                                 </span>:''
                             }
                             {
                                 tags.length?<span>
-                                    <IconPriceTag style={{position:"relative",top:"3px",marginRight:"3px"}}/>
+                                    <IconPriceTag style={{position:"relative",top:"2px",marginRight:"5px"}}/>
                                     {tags.map(tag=>{
                                         return <span key={tag} style={{marginRight:"5px"}}>{tag}</span>
                                     })}
                                 </span>:''
                             }
                         </div>
-                        <Tooltip content={"返回"} position={"bottom"} style={{backgroundColor:"white",color:"black",letterSpacing:"2px"}}>
+                        <Tooltip content={"返回"} position={"bottom"} style={{letterSpacing:"2px"}}>
                             <IconReply size={"extra-large"} className={styles["iconReply"]} onClick={()=>navigate(-1)}/>
                         </Tooltip>
                     </div>

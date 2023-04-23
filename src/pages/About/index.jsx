@@ -20,7 +20,7 @@ function About(){
                     </Button>
                 }>
                 <div className={styles["aboutContent"]}>
-                    这里是贺鱼璐的个人博客项目，使用了webpack、React、jsx、mdx.js、react-router-dom、node.js等技术，欢迎各位大佬一起探讨交流。
+                    这里是贺鱼璐的个人博客项目，使用了webpack、React、jsx、mdx.js、react-router-dom、发布订阅、节流、node.js等技术，欢迎各位大佬一起探讨交流。
                 </div>
             </Card>
         </div>

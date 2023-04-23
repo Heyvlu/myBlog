@@ -1,5 +1,6 @@
 .notice{
   width: 15vw;
+  min-width: 145px;
   min-height: 187px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
@@ -8,7 +9,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   .noticeTitle{
     width: 80%;
     font-size: 18px;
@@ -26,7 +27,7 @@
   .noticeContent{
     width: 80%;
     font-size: 14px;
-    line-height: 26px;
+    line-height: 30px;
   }
 }
 .notice:hover{

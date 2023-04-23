@@ -1,5 +1,6 @@
 .tag{
   width: 15vw;
+  min-width: 145px;
   min-height: 100px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
@@ -8,18 +9,18 @@
   align-items: center;
   flex-direction: column;
   cursor: default;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   .tagTitle{
     width: 80%;
     font-size: 18px;
-    margin: 18px 0 18px 0;
+    margin: 25px 0 18px 0;
   }
   .tagContent{
     width: 80%;
     color: #999;
     font-size: 15px;
-    line-height: 26px;
-    margin-bottom: 18px;
+    line-height: 40px;
+    margin-bottom: 30px;
     .one{
       margin-right: 9px;
       cursor: pointer;

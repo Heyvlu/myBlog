@@ -4,11 +4,12 @@
   align-items: center;
   flex-direction: column;
   width: 15vw;
-  height: 400px;
+  min-width: 145px;
+  height: 420px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
   cursor: default;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   img{
     width: 140px;
     height: 140px;
@@ -23,13 +24,13 @@
     transform: rotate(360deg);
   }
   .userName{
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 6px;
   }
   .signature{
     color: #555666;
     font-size: 13px;
-    margin-bottom: 18px;
+    margin-bottom: 25px;
   }
   .summary{
     width: 80%;

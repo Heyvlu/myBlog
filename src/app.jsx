@@ -9,14 +9,26 @@ import eventBus from "./utils/pubSub";
 
 function App(){
     const element=useRoutes(routes);
+    // 节流
+    const throttle=(fn,time)=>{
+        let timer=null;
+        return ()=>{
+            if(timer) return;
+            timer=setTimeout(()=>{
+                fn();
+                timer=null;
+            },time)
+        }
+    }
+
     const emitScroll=()=>{
         eventBus.emit("scrollTop",document?.documentElement?.scrollTop);
     }
 
     useEffect(()=>{
-        window.addEventListener("scroll",emitScroll);
+        window.addEventListener("scroll",throttle(emitScroll,100));
         return ()=>{
-            window.removeEventListener("scroll",emitScroll);
+            window.removeEventListener("scroll",throttle(emitScroll,100));
         }
     },[])
 

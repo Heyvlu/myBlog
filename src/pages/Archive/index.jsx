@@ -1,17 +1,30 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import styles from "./index.scss";
 import {IconCreditCard} from "@douyinfe/semi-icons";
 import getSortArticleList from "@/utils/getSortArticleList";
 import {useNavigate} from "react-router-dom";
 
+const sortArticleList=getSortArticleList();
 function Archive(){
-    const sortArticleList=getSortArticleList();
     const navigate=useNavigate();
     const upperCaseMonth=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
-    const [time,setTime]=useState({});
+    // const [time,setTime]=useState({});
 
+    // useEffect(()=>{
+    //     const timeObj={};
+    //     sortArticleList.map(item=>{
+    //         let yearMonth=item.time.slice(0,7);
+    //         if(!(yearMonth in timeObj)){
+    //             timeObj[yearMonth]=1;
+    //         }else{
+    //             timeObj[yearMonth]+=1;
+    //         }
+    //     })
+    //     setTime({...timeObj});
+    // },[])
 
-    useEffect(()=>{
+    const time=useMemo(test,[sortArticleList])
+    function test(){
         const timeObj={};
         sortArticleList.map(item=>{
             let yearMonth=item.time.slice(0,7);
@@ -21,8 +34,9 @@ function Archive(){
                 timeObj[yearMonth]+=1;
             }
         })
-        setTime({...timeObj});
-    },[])
+        console.log("子组件执行")
+        return timeObj;
+    }
 
     function goToArchiveDetail(yearMonth){
         navigate("/archiveDetail",{

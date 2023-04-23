@@ -1,6 +1,6 @@
 .archive{
   width: 15vw;
-  min-height: 100px;
+  min-width: 145px;
   border: 1px solid #f0f0f2;
   border-radius: 10px;
   cursor: default;
@@ -12,11 +12,11 @@
   .archiveTitle{
     width: 80%;
     font-size: 18px;
-    margin: 18px 0 18px 0;
+    margin: 25px 0 18px 0;
   }
   .archiveContent{
     width: 80%;
-    padding-bottom: 18px;
+    padding-bottom: 25px;
     .archiveItem{
       width: 100%;
       line-height: 35px;
