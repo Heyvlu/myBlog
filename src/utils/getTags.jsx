@@ -1,9 +1,9 @@
-import getInfo from "./getInfo";
+import getSortArticleList from "@/utils/getSortArticleList";
 
 function getTags(){
     const res=[];
-    const info=getInfo();
-    for (const item of info) {
+    const sortArticleList=getSortArticleList();
+    for (const item of sortArticleList) {
         item.tags.map(value=>{
             res.push(value);
         })

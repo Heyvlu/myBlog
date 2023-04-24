@@ -8,23 +8,9 @@ const sortArticleList=getSortArticleList();
 function Archive(){
     const navigate=useNavigate();
     const upperCaseMonth=["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"]
-    // const [time,setTime]=useState({});
 
-    // useEffect(()=>{
-    //     const timeObj={};
-    //     sortArticleList.map(item=>{
-    //         let yearMonth=item.time.slice(0,7);
-    //         if(!(yearMonth in timeObj)){
-    //             timeObj[yearMonth]=1;
-    //         }else{
-    //             timeObj[yearMonth]+=1;
-    //         }
-    //     })
-    //     setTime({...timeObj});
-    // },[])
-
-    const time=useMemo(test,[sortArticleList])
-    function test(){
+    const time=useMemo(getTime,[])
+    function getTime(){
         const timeObj={};
         sortArticleList.map(item=>{
             let yearMonth=item.time.slice(0,7);
@@ -34,7 +20,6 @@ function Archive(){
                 timeObj[yearMonth]+=1;
             }
         })
-        console.log("子组件执行")
         return timeObj;
     }
 

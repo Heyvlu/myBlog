@@ -11,7 +11,6 @@ function getSortArticleList(){
     list.sort((a,b)=>{
         return (b.timestamp-a.timestamp);
     })
-    // console.log(list,"list")
     return list;
 }
 

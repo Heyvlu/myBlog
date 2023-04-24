@@ -1,34 +1,33 @@
 import React,{useState,useEffect} from "react";
 import styles from "./index.scss";
 import {IconCalendar,IconPriceTag} from "@douyinfe/semi-icons";
-import getInfo from "@/utils/getInfo";
-
+import getSortArticleList from "@/utils/getSortArticleList";
 function ArticlePreview(props){
     const {text,filename,articleDetail}=props;
     const articleTitle=text.match(/\s*#+\s*([\w\W]*?)\n/)[1];
     const articleContent=text.replaceAll(/[#*!`]/g,'').replace(new RegExp(articleTitle),'');
     const articleText=articleContent.replace(new RegExp(/export const info = {time:".*/),'');
-    const info=getInfo();
+    const sortArticleList=getSortArticleList();
 
     const [time,setTime]=useState('');
     const [tags,setTags]=useState([]);
 
     useEffect(()=>{
-        info.map( item => {
-            if(item.fileName===filename){
+        sortArticleList.map( item => {
+            if(item.fileName==filename){
                 setTime(item.time)
             }
         })
-    },[])
+    },[filename])
 
     useEffect(()=>{
-        info.map( item => {
-            if(item.fileName===filename){
+        sortArticleList.map( item => {
+            if(item.fileName==filename){
                 const arr=Array.from(new Set(item.tags));
                 setTags(arr);
             }
         })
-    },[])
+    },[filename])
 
     return (
         <div className={styles["preview"]} onClick={()=>articleDetail(articleTitle,filename)}>
