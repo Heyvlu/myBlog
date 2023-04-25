@@ -56,7 +56,7 @@ function TagDetail(){
                                     <Timeline.Item time={item.time} type={"ongoing"} key={index}>
                                         <div className={styles["preview"]}>
                                             <div className={styles["titleDiv"]}>
-                                                <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
+                                                <img src={`assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
                                             </div>
                                             <ArticlePreview text={item.text} filename={item.fileName} articleDetail={articleDetail}/>
                                         </div>

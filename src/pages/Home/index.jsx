@@ -66,13 +66,13 @@ function Home(){
                                         <>
                                             <ArticlePreview text={item.text} filename={item.fileName} articleDetail={articleDetail}/>
                                             <div className={styles["titleDiv"]}>
-                                                <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
+                                                <img src={`assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
                                             </div>
                                         </>
                                         :
                                         <>
                                             <div className={styles["titleDiv"]}>
-                                                <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
+                                                <img src={`assets/images/titleBgs/${imgName}.png`} alt={"图片"} className={styles["titleBg"]}/>
                                             </div>
                                             <ArticlePreview text={item.text} filename={item.fileName} articleDetail={articleDetail}/>
                                         </>

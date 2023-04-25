@@ -22,7 +22,7 @@ export const info = {time:"2023-01-09",tags:["防抖","节流"]};
 
 ```
 function debounce(fn, delay) {
-let timer = null
+  let timer = null
   return () => {
     if (timer) {
       clearTimeout(timer)
@@ -45,7 +45,7 @@ let timer = null
 
 ```
 function throttle(fn, time) {
-let timer = null;
+  let timer = null;
   return () => {
     if (timer) return;
     timer = setTimeout(() => {
@@ -58,4 +58,4 @@ let timer = null;
 
 应用场景：
 
-高频事件例如快速点击、鼠标滑动、resize事件、scroll事件、下拉加载、视频播放记录时间等。
+高频事件例如快速点击、resize事件、scroll事件、下拉加载、视频播放记录时间等。

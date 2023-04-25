@@ -4,18 +4,19 @@ const webpack = require('webpack');
 const {EsbuildPlugin} = require('esbuild-loader');
 const MiniCssExtractPlugin=require("mini-css-extract-plugin");
 const devMode=process.env.NODE_ENV !== "production";
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const mapArticles=require('./src/mapArticles');
 
 const articleList=mapArticles();
 
 module.exports = {
-    mode: 'development',
     entry: './src/index.jsx',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: "dist.js",
-        assetModuleFilename: "images/[hash][ext][query]"
+        assetModuleFilename: "images/[hash][ext][query]",
+        publicPath: process.env.NODE_ENV=='production'?"/":"/"
     },
     optimization: {
         minimizer: [
@@ -80,8 +81,19 @@ module.exports = {
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({template: "./public/index.html"}),
         new webpack.DefinePlugin({
-            articleList:JSON.stringify(articleList)
-        })
+            articleList:JSON.stringify(articleList),
+            'process.env.NODE_ENV':JSON.stringify(process.env.NODE_ENV)
+        }),
+        new CopyWebpackPlugin({
+            patterns:[{
+                from:path.resolve(__dirname,"public"),
+                to:path.resolve(__dirname,"dist"),
+                globOptions:{
+                    ignore:['**/index.html']
+                }
+            }]
+        }),
+        new MiniCssExtractPlugin()
     ],
     devServer: {
         static: {

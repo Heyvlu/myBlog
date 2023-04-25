@@ -12,7 +12,7 @@ function Personal(){
 
     return(
         <div className={styles["personal"]}>
-            <img src={"/assets/images/others/personal.jpeg"} alt={"头像"}/>
+            <img src={"assets/images/others/personal.jpeg"} alt={"头像"}/>
             <div className={styles["userName"]}>贺鱼璐</div>
             <div className={styles["signature"]}>业精于勤，荒于嬉</div>
             <div className={styles["summary"]}>

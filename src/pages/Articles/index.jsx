@@ -50,7 +50,7 @@ function Articles(){
                 <Header/>
                 <BackToTop/>
                 <div className={styles["top"]}>
-                    <img src={`/assets/images/titleBgs/${imgName}.png`} alt={"图片"}/>
+                    <img src={`assets/images/titleBgs/${imgName}.png`} alt={"图片"}/>
                     <div className={styles["topText"]}>
                         <div className={styles["topArticleTitle"]}>
                             {articleTitle}
@@ -80,7 +80,7 @@ function Articles(){
                     <div className={styles["articleDetail"]}>
                         <Article className={styles["oneArticle"]} components={{
                             img:({src})=>{
-                                return <img src={"/assets/images/articles/"+src} className={styles["articleImg"]}/>
+                                return <img src={"assets/images/articles/"+src} className={styles["articleImg"]}/>
                             },
                             code:({children})=>{
                                 return <CodeBlock children={children}/>
