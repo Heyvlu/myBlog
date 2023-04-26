@@ -3,8 +3,12 @@ import styles from './index.scss';
 import {IconGithubLogo, IconHome, IconLikeHeart} from "@douyinfe/semi-icons";
 import {useNavigate} from "react-router-dom";
 import eventBus from "@/utils/pubSub";
+import {connect} from "react-redux";
+import {clearHomeState} from "@/redux/actions/setHomeState";
+import {setScrollTop} from "@/redux/actions/setScrollTop";
 
-function Header(){
+function Header(props){
+    const {clearHomeState,setScrollTop}=props;
     const navigate=useNavigate();
     const [isTop,setIsTop]=useState(true);
 
@@ -37,6 +41,9 @@ function Header(){
         window.open("https://github.com/Heyvlu")
     }
     function goToHome(){
+        setScrollTop(0);
+        clearHomeState();
+        window.scrollTo(0,0)
         navigate('/home')
     }
     function goToAbout(){
@@ -51,4 +58,10 @@ function Header(){
     )
 }
 
-export default Header;
+export default connect(
+    ()=>({}),
+    {
+        setScrollTop:setScrollTop,
+        clearHomeState:clearHomeState
+    }
+)(Header);

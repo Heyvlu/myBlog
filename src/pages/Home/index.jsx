@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect,memo} from 'react';
 import ArticlePreview from "../ArticlePreview";
 import {useNavigate} from "react-router-dom";
 import styles from "./index.scss";
@@ -10,21 +10,23 @@ import {Pagination} from "@douyinfe/semi-ui";
 import Header from "@/components/Header";
 import Archive from "@/pages/Archive";
 import getSortArticleList from "@/utils/getSortArticleList";
+import {connect} from "react-redux";
+import {setHomeState} from "@/redux/actions/setHomeState";
+import {setScrollTop} from "@/redux/actions/setScrollTop";
 
-function Home(){
+const Home=memo((props)=>{
+    const {homeState,setHomeState,scrollTop,setScrollTop}=props;
     const sortArticleList=getSortArticleList();
     const navigate=useNavigate();
-    const [page, setPage]=useState(1);
-    const [list,setList]=useState(sortArticleList.slice(0,6));
 
     function articleDetail(articleTitle,filename){
+        setScrollTop(document.documentElement.scrollTop);
         navigate('/articleDetail',{
             state:{articleTitle,filename}
         })
     }
 
     function onPageChange(currentPage){
-        setPage(currentPage);
         let see=(currentPage-1)*6;
         let newList;
         if(see+6>=sortArticleList.length){
@@ -32,13 +34,17 @@ function Home(){
         }else{
             newList=sortArticleList.slice(see,see+6);
         }
-        setList(newList);
+        setHomeState({
+            list:newList,
+            currentPage:currentPage
+        })
+        setScrollTop(0);
         window.scrollTo(0,0);
     }
 
     useEffect(()=>{
-        window.scrollTo(0,0)
-    },[])
+        window.scrollTo(0,scrollTop);
+    },[scrollTop])
 
 
     return (
@@ -58,7 +64,7 @@ function Home(){
                 </div>
                 <div className={styles["right"]}>
                     {
-                        list.map((item,index)=>{
+                        homeState.list.map((item,index)=>{
                             const imgName=item.fileName.match(/([\w\W]+)\./)[1];
                             return <div className={styles["preview"]} key={index}>
                                 {
@@ -80,11 +86,20 @@ function Home(){
                             </div>
                         })
                     }
-                    <Pagination total={sortArticleList.length} showTotal pageSize={6} currentPage={page} onPageChange={onPageChange}></Pagination>
+                    <Pagination total={sortArticleList.length} showTotal pageSize={6} currentPage={homeState.currentPage} onPageChange={onPageChange}></Pagination>
                 </div>
             </div>
         </div>
     )
-}
+})
 
-export default Home;
+export default connect(
+    state=>({
+        homeState:state.homeState,
+        scrollTop:state.scrollTop
+    }),
+    {
+        setHomeState:setHomeState,
+        setScrollTop:setScrollTop
+    }
+)(Home);
